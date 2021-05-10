@@ -1,7 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
-namespace nunoron\RulesEngine;
+namespace nunoron\RulesEngine\Contracts;
+
+use nunoron\RulesEngine\Rule;
 
 interface ResolverConflictInterface
 {

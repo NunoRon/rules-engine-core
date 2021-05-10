@@ -15,7 +15,7 @@ final class RulesEngineTest extends TestCase
 {
     public function testRulesEngineWithoutRules()
     {
-        $rulesEngine = new RulesEngine(new ExpressionLanguage(), new ResolverConflictManager());
+        $rulesEngine = new RulesEngine(new ExpressionLanguage());
 
         $rule = $rulesEngine->apply([new Rule('info == "info2"', 1)], ['info' => 'info']);
 
