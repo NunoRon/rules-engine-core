@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace RulesEngine\Contracts;
+namespace nunoron\RulesEngine\Contracts;
 
-use RulesEngine\Rule;
+use nunoron\RulesEngine\Rule;
 
 interface RulesEngineInterface
 {

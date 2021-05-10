@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use RulesEngine\ResolverConflictManager;
-use RulesEngine\Rule;
-use RulesEngine\RuleEngine;
+use nunoron\RulesEngine\ResolverConflictManager;
+use nunoron\RulesEngine\Rule;
+use nunoron\RulesEngine\RulesEngine;
 use stdClass;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-final class ProcessAccountStatementListenerTest extends TestCase
+final class RulesEngineTest extends TestCase
 {
     public function testRulesEngineWithoutRules()
     {
-        $rulesEngine = new RuleEngine(new ExpressionLanguage(), new ResolverConflictManager());
+        $rulesEngine = new RulesEngine(new ExpressionLanguage(), new ResolverConflictManager());
 
         $rule = $rulesEngine->apply([new Rule('info == "info2"', 1)], ['info' => 'info']);
 
@@ -24,7 +24,7 @@ final class ProcessAccountStatementListenerTest extends TestCase
 
     public function testRulesEngineWithOneRule()
     {
-        $rulesEngine = new RuleEngine(new ExpressionLanguage(), new ResolverConflictManager());
+        $rulesEngine = new RulesEngine(new ExpressionLanguage(), new ResolverConflictManager());
 
         $rule = $rulesEngine->apply([new Rule('info == "info"', 1)], ['info' => 'info']);
 
@@ -33,7 +33,7 @@ final class ProcessAccountStatementListenerTest extends TestCase
 
     public function testRulesEngineWithMultipleRules()
     {
-        $rulesEngine = new RuleEngine(new ExpressionLanguage(), new ResolverConflictManager());
+        $rulesEngine = new RulesEngine(new ExpressionLanguage(), new ResolverConflictManager());
 
         $foo = new stdClass();
         $foo->info = "info";
@@ -41,6 +41,6 @@ final class ProcessAccountStatementListenerTest extends TestCase
 
         $this->assertNotNull($rule);
         $this->assertEquals($rule->getPriority(), 3);
-        $this->assertEquals($rule->getCondition(), 3);
+        $this->assertEquals($rule->getCondition(), 'info.info === "info"');
     }
 }

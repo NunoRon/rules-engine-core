@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RulesEngine;
+namespace nunoron\RulesEngine;
 
 final class ResolverConflictManager implements ResolverConflictInterface
 {
