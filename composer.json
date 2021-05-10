@@ -1,5 +1,5 @@
 {
-    "name": "nunoduarte/rules-engine",
+    "name": "nunoron/rules-engine-core",
     "description": "Basic rules engine",
     "type": "library",
     "require": {
