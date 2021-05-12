@@ -8,26 +8,27 @@ final class Rule
 {
     private $condition;
     private $priority;
+    private $identifier;
 
-    public function __construct(string $condition, int $priority)
+    public function __construct($condition, $priority, $identifier = null)
     {
-        $this->condition = $condition;
-        $this->priority = $priority;
+        $this->identifier = $identifier;
+        $this->condition  = $condition;
+        $this->priority   = $priority;
     }
 
-    /**
-     * @return string
-     */
     public function getCondition(): string
     {
         return $this->condition;
     }
 
-    /**
-     * @return int
-     */
     public function getPriority(): int
     {
         return $this->priority;
+    }
+
+    public function getIdentifier()
+    {
+        return $this->identifier;
     }
 }
