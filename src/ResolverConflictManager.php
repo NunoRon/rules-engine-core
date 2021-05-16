@@ -20,9 +20,11 @@ final class ResolverConflictManager implements ResolverConflictInterface
             return reset($rules);
         }
 
-        foreach ($this->getResolvers() as $resolver) {
-            $rules   = new $resolver($rules, $data);
-            if (count([$rules]) === 1) {
+        foreach ($this->getResolvers() as $class) {
+            $resolver = new $class; 
+            $rules = $resolver($rules, $data);
+            
+            if (count($rules) === 1) {
                 return reset($rules);
             }
         }
